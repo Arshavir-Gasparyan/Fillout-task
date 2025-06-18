@@ -10,6 +10,7 @@ import MoreIcon from "../../icons/MoreIcon";
 import { Page, PageType } from "../types/pages";
 import { pagesMap } from "../constants/pagesMap";
 
+// Create a default list of initial pages
 const initialPages: Page[] = [
   {
     id: uuidv4(),
@@ -49,82 +50,76 @@ const initialPages: Page[] = [
   },
 ];
 
+// Utility to generate a new page with a unique ID
+const createPageWithId = (type: PageType): Page => ({
+  ...pagesMap[type],
+  id: uuidv4(),
+});
+
 export default function usePages() {
-  const [pages, setPages] = useState(initialPages);
-  const [activePageIndex, setActivePageIndex] = useState<number>(0);
+  const [pages, setPages] = useState<Page[]>(initialPages);
+  const [activePageIndex, setActivePageIndex] = useState(0);
 
-  function updatePages(value: Page[]) {
-    setPages(value);
-  }
+  const updatePages = (updatedPages: Page[]) => {
+    setPages(updatedPages);
+  };
 
-  function addPage(type: PageType, index?: number) {
-    const newPage = { ...pagesMap[type], id: uuidv4() };
-
-    setPages((prevPages) => {
-      const copy = [...prevPages];
-      const insertIndex = index !== undefined ? index : copy.length;
-
-      copy.splice(insertIndex, 0, newPage);
-
-      setActivePageIndex(insertIndex);
-
-      return copy;
+  const addPage = (type: PageType, index?: number) => {
+    const newPage = createPageWithId(type);
+    setPages((prev) => {
+      const newPages = [...prev];
+      const insertAt = index ?? newPages.length;
+      newPages.splice(insertAt, 0, newPage);
+      setActivePageIndex(insertAt);
+      return newPages;
     });
-  }
+  };
 
-  function duplicatePage(index: number) {
-    const newPage = { ...pages[index], id: uuidv4() };
-
-    setPages((prevPages) => {
-      const copy = [...prevPages];
-      const insertIndex = index + 1;
-
-      copy.splice(insertIndex, 0, newPage);
-
-      setActivePageIndex(insertIndex);
-
-      return copy;
+  const duplicatePage = (index: number) => {
+    const duplicatedPage = { ...pages[index], id: uuidv4() };
+    setPages((prev) => {
+      const newPages = [...prev];
+      newPages.splice(index + 1, 0, duplicatedPage);
+      setActivePageIndex(index + 1);
+      return newPages;
     });
-  }
+  };
 
-  function renamePage(value: string, id: string) {
-    setPages((prevPages) =>
-      prevPages.map((page) =>
-        page.id === id ? { ...page, title: value } : page,
+  const renamePage = (newTitle: string, id: string) => {
+    setPages((prev) =>
+      prev.map((page) =>
+        page.id === id ? { ...page, title: newTitle } : page,
       ),
     );
-  }
+  };
 
-  function deletePage(index: number) {
+  const deletePage = (index: number) => {
     if (pages.length === 1) return;
 
-    setPages((prevPages) => {
-      const copy = [...prevPages];
-      copy.splice(index, 1);
+    setPages((prev) => {
+      const newPages = [...prev];
+      newPages.splice(index, 1);
 
-      const isDeletingFirst = index === 0;
-      const isDeletingLast = index === prevPages.length - 1;
+      const newActiveIndex =
+        index === 0
+          ? 0
+          : index >= newPages.length
+            ? newPages.length - 1
+            : index;
 
-      if (isDeletingFirst) {
-        setActivePageIndex(0);
-      } else if (isDeletingLast) {
-        setActivePageIndex(index - 1);
-      } else {
-        setActivePageIndex(index);
-      }
-
-      return copy;
+      setActivePageIndex(newActiveIndex);
+      return newPages;
     });
-  }
+  };
 
   return {
     pages,
     activePageIndex,
     updatePages,
     addPage,
-    deletePage,
     duplicatePage,
     renamePage,
+    deletePage,
     setActivePageIndex,
   };
 }
