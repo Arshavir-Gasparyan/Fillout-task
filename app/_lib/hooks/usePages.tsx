@@ -10,7 +10,6 @@ import MoreIcon from "../../icons/MoreIcon";
 import { Page, PageType } from "../types/pages";
 import { pagesMap } from "../constants/pagesMap";
 
-// Create a default list of initial pages
 const initialPages: Page[] = [
   {
     id: uuidv4(),
@@ -50,7 +49,6 @@ const initialPages: Page[] = [
   },
 ];
 
-// Utility to generate a new page with a unique ID
 const createPageWithId = (type: PageType): Page => ({
   ...pagesMap[type],
   id: uuidv4(),
@@ -100,14 +98,7 @@ export default function usePages() {
       const newPages = [...prev];
       newPages.splice(index, 1);
 
-      const newActiveIndex =
-        index === 0
-          ? 0
-          : index >= newPages.length
-            ? newPages.length - 1
-            : index;
-
-      setActivePageIndex(newActiveIndex);
+      setActivePageIndex(index - 1);
       return newPages;
     });
   };

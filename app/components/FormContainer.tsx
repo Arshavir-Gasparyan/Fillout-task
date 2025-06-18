@@ -12,21 +12,22 @@ export default function FormContainer({
   activePageIndex,
   onSetActivePageIndex,
 }: Props) {
+  const aciveIndex =
+    pages.length === activePageIndex ? activePageIndex - 1 : activePageIndex;
   return (
     <div
       className={"flex h-11/12 items-center justify-center rounded-xl bg-black"}
     >
       <StepCard
-        title={pages[activePageIndex].title}
-        description={pages[activePageIndex].description}
-        step={activePageIndex + 1}
+        title={pages[aciveIndex].title}
+        description={pages[aciveIndex].description}
+        step={aciveIndex + 1}
         totalSteps={pages.length}
         onNext={() => {
-          if (activePageIndex < pages.length)
-            onSetActivePageIndex(activePageIndex + 1);
+          if (aciveIndex < pages.length) onSetActivePageIndex(aciveIndex + 1);
         }}
         onPrevious={() => {
-          if (activePageIndex > 0) onSetActivePageIndex(activePageIndex - 1);
+          if (aciveIndex > 0) onSetActivePageIndex(aciveIndex - 1);
         }}
       />
     </div>
