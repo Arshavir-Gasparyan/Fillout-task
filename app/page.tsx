@@ -2,7 +2,7 @@
 
 import FormContainer from "./components/FormContainer";
 import Navigation from "./components/Navigation";
-import usePages from "./hooks/usePages";
+import usePages from "./_lib/hooks/usePages";
 
 export default function Home() {
   const {

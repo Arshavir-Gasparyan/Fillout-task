@@ -6,7 +6,7 @@ import {
   horizontalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import SortablePageItem from "./SortablePageItem";
-import { Page, PageType } from "@/app/types/page";
+import { Page, PageType } from "@/app/_lib/types/pages";
 
 interface Props {
   pages: Page[];

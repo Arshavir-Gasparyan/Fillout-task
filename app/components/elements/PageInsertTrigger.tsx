@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PlusIcon from "../../icons/PlusIcon";
-import { PageType } from "../../types/page";
+import { PageType } from "../../_lib/types/pages";
 import NewPageMenu from "../menu/NewPageMenu";
 import PopperMenu from "./PopperMenu";
 

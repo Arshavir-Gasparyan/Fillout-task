@@ -17,7 +17,7 @@ import Button from "./elements/Button";
 import SortablePageList from "./sortable/SortablePageList";
 import PopperMenu from "./elements/PopperMenu";
 import NewPageMenu from "./menu/NewPageMenu";
-import { Page, PageType } from "../types/page";
+import { Page, PageType } from "../_lib/types/pages";
 
 interface Props {
   pages: Page[];

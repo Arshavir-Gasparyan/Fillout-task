@@ -3,11 +3,11 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import CircleCheckIcon from "../icons/CircleCheckIcon";
-import CircleInfoIcon from "../icons/CircleInfoIcon";
-import DocumentIcon from "../icons/DocumentIcon";
-import MoreIcon from "../icons/MoreIcon";
-import { Page, PageType } from "../types/page";
+import CircleCheckIcon from "../../icons/CircleCheckIcon";
+import CircleInfoIcon from "../../icons/CircleInfoIcon";
+import DocumentIcon from "../../icons/DocumentIcon";
+import MoreIcon from "../../icons/MoreIcon";
+import { Page, PageType } from "../types/pages";
 import { pagesMap } from "../constants/pagesMap";
 
 const initialPages: Page[] = [

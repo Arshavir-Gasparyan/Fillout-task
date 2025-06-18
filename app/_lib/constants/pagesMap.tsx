@@ -1,8 +1,8 @@
-import CircleCheckIcon from "../icons/CircleCheckIcon";
-import CircleInfoIcon from "../icons/CircleInfoIcon";
-import DocumentIcon from "../icons/DocumentIcon";
-import MoreIcon from "../icons/MoreIcon";
-import { Page, PageType } from "../types/page";
+import CircleCheckIcon from "../../icons/CircleCheckIcon";
+import CircleInfoIcon from "../../icons/CircleInfoIcon";
+import DocumentIcon from "../../icons/DocumentIcon";
+import MoreIcon from "../../icons/MoreIcon";
+import { Page, PageType } from "../types/pages";
 
 export const pagesMap: Record<PageType, Page> = {
   ["Info"]: {

@@ -9,7 +9,7 @@ import {
   MouseEvent,
   useCallback,
 } from "react";
-import useOutsideClick from "../../hooks/useOutsideClick";
+import useOutsideClick from "../../_lib/hooks/useOutsideClick";
 
 interface Props {
   icon: ReactElement<any>;

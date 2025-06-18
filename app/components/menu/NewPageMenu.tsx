@@ -2,7 +2,7 @@ import React from "react";
 import CircleCheckIcon from "../../icons/CircleCheckIcon";
 import CircleInfoIcon from "../../icons/CircleInfoIcon";
 import DocumentIcon from "../../icons/DocumentIcon";
-import { PageType } from "../../types/page";
+import { PageType } from "../../_lib/types/pages";
 
 interface Props {
   close: VoidFunction;

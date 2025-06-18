@@ -9,7 +9,7 @@ import PopperMenu from "../elements/PopperMenu";
 import SettingsMenu from "../menu/SettingsMenu";
 import PageInsertTrigger from "../elements/PageInsertTrigger";
 import Modal from "../elements/Modal";
-import { Page, PageType } from "@/app/types/page";
+import { Page, PageType } from "@/app/_lib/types/pages";
 
 interface Props {
   page: Page;

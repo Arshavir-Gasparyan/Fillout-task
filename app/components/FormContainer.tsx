@@ -1,4 +1,4 @@
-import { Page } from "../types/page";
+import { Page } from "../_lib/types/pages";
 import StepCard from "./StepCard";
 
 interface Props {

@@ -1,4 +1,4 @@
-import { IconProps } from "../types/icon";
+import { IconProps } from "../_lib/types/icon";
 
 const MoreIcon = (props: IconProps) => (
   <svg
